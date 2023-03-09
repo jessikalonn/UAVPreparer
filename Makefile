@@ -1,7 +1,7 @@
 #/***************************************************************************
-# UAVPrepareProcessing
+# UAVPreparer
 #
-# This plugin examines height properties on a DSM
+# This plugins examines height properties on a DSM
 #							 -------------------
 #		begin				: 2023-03-09
 #		git sha				: $Format:%H$
@@ -38,21 +38,21 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	uav_preparer_processing.py 
+	uav_preparer.py uav_preparer_dialog.py
 
-PLUGINNAME = uav_preparer_processing
+PLUGINNAME = uav_preparer
 
 PY_FILES = \
 	__init__.py \
-	uav_preparer_processing.py 
+	uav_preparer.py uav_preparer_dialog.py
 
-UI_FILES = 
+UI_FILES = uav_preparer_dialog_base.ui
 
-EXTRAS = metadata.txt 
+EXTRAS = metadata.txt icon.png
 
 EXTRA_DIRS =
 
-COMPILED_RESOURCE_FILES = 
+COMPILED_RESOURCE_FILES = resources.py
 
 PEP8EXCLUDE=pydev,resources.py,conf.py,third_party,ui
 
@@ -75,7 +75,7 @@ HELP = help/build/html
 
 PLUGIN_UPLOAD = $(c)/plugin_upload.py
 
-RESOURCE_SRC=$(shell grep '^ *<file'  | sed 's@</file>@@g;s/.*>//g' | tr '\n' ' ')
+RESOURCE_SRC=$(shell grep '^ *<file' resources.qrc | sed 's@</file>@@g;s/.*>//g' | tr '\n' ' ')
 
 .PHONY: default
 default:
